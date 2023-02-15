@@ -43,7 +43,9 @@ class _my_mainState extends State<my_main> {
           onPressed: () {
             if (currentIndex == 0) {
               addstatus(context);
-            } else if (currentIndex == 1) {
+            } else if (currentIndex == 1) 
+            {
+              
             } else if (currentIndex == 2) {
               addyourgroup(context);
             }

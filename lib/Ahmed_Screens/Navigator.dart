@@ -129,7 +129,7 @@ void Addfrinedgroup(BuildContext ctx) {
 }
 
 void addstatus(BuildContext ctx) {
-  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
+  Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
     return  StatusScreen();
   }));
 }

@@ -92,7 +92,15 @@ class _OtpForm extends State<OtPForm> {
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 3.w,
-                                      color: const Color.fromRGBO(38, 38, 38, 1)),
+                                      color: const Color.fromRGBO(38, 38, 38, 1)
+                                      ),
+                                  borderRadius: BorderRadius.circular(20.0.r),
+                                ),
+                                 focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 3.w,
+                                      color: const Color.fromRGBO(38, 38, 38, 1)
+                                      ),
                                   borderRadius: BorderRadius.circular(20.0.r),
                                 ),
                               ),
@@ -129,6 +137,13 @@ class _OtpForm extends State<OtPForm> {
                                       color: const Color.fromRGBO(38, 38, 38, 1)),
                                   borderRadius: BorderRadius.circular(20.0.r),
                                 ),
+                                 focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 3.w,
+                                      color: const Color.fromRGBO(38, 38, 38, 1)
+                                      ),
+                                  borderRadius: BorderRadius.circular(20.0.r),
+                                ),
                               ),
                               onChanged: (value) {
                                 if (value.length == 1) {
@@ -160,6 +175,13 @@ class _OtpForm extends State<OtPForm> {
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:  BorderSide(
                                       width: 3.w, color:const Color.fromRGBO(38, 38, 38, 1)),
+                                  borderRadius: BorderRadius.circular(20.0.r),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 3.w,
+                                      color: const Color.fromRGBO(38, 38, 38, 1)
+                                      ),
                                   borderRadius: BorderRadius.circular(20.0.r),
                                 ),
                               ),
@@ -194,6 +216,13 @@ class _OtpForm extends State<OtPForm> {
                                   borderSide: BorderSide(
                                       width: 3.w,
                                       color: const Color.fromRGBO(38, 38, 38, 1)),
+                                  borderRadius: BorderRadius.circular(20.0.r),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 3.w,
+                                      color: const Color.fromRGBO(38, 38, 38, 1)
+                                      ),
                                   borderRadius: BorderRadius.circular(20.0.r),
                                 ),
                               ),
