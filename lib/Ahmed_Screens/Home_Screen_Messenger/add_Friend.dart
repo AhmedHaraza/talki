@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Home_Screen_Messenger/boutonnavigationbar.dart';
+import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/TextForm/Myform.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/my_theme.dart';
 
@@ -41,6 +42,21 @@ class Addfrinds extends StatelessWidget {
                   style: MyThemeData.Addfriends,
                 ),
               ],
+            ),
+          ),
+          bottomNavigationBar: Container(
+            padding: REdgeInsets.only(bottom: 20),
+            color: const Color(0xff161616),
+            child: InkWell(
+              child: Text(
+                "Back",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: const Color(0xff5F5A5A),
+                  fontSize: 16.sp,
+                ),
+              ),
+              onTap: () => Backandsubmitineditprofile(context),
             ),
           ),
         ));

@@ -17,43 +17,46 @@ class contectsmessegegroup extends StatelessWidget {
       child: Scaffold(
         backgroundColor: const Color(0xff161616),
         resizeToAvoidBottomInset: false,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: REdgeInsets.only(top: 50, left: 20),
-              child: Text(
-                "People who added",
-                style: MyThemeData.Addfriends,
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: REdgeInsets.only(top: 50, left: 20),
+                child: Text(
+                  "People who added",
+                  style: MyThemeData.Addfriends,
+                ),
               ),
-            ),
-            SizedBox(height: 60.h),
-            Padding(
-              padding: REdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                  margin: REdgeInsets.only(right: 20),
-                  child: const Searchforcontents()),
-            ),
-            SizedBox(height: 10.h),
-            Padding(
-              padding: REdgeInsets.only(left: 20),
-              child: Text(
-                "Select Contact",
-                style: MyThemeData.Addfriends,
+              SizedBox(height: 60.h),
+              Padding(
+                padding: REdgeInsets.only(left: 20, right: 20),
+                child: Container(
+                    margin: REdgeInsets.only(right: 20),
+                    child: const Searchforcontents()),
               ),
-            ),
-          ],
+              SizedBox(height: 10.h),
+              Padding(
+                padding: REdgeInsets.only(left: 20),
+                child: Text(
+                  "Select Contact",
+                  style: MyThemeData.Addfriends,
+                ),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: Padding(
           padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
           child: SizedBox(
-            height: 240.h,
+            height: 210.h,
             child: Column(
               children: [
                 Padding(
                   padding: REdgeInsets.only(right: 20, left: 20),
                   child: Container(
-                      height: 150.h,
+                      height: 130.h,
                       color: Colors.white,
                       child: Center(
                         child: Padding(

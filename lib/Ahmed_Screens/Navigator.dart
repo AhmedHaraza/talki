@@ -93,7 +93,7 @@ void BackResetPass(BuildContext ctx) {
 }
 
 void addfriend(BuildContext ctx) {
-  Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return  const Addfrinds();
   }));
 }
@@ -123,13 +123,13 @@ void Backandsubmitineditprofile(BuildContext ctx) {
 }
 
 void Addfrinedgroup(BuildContext ctx) {
-  Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return const Addfrinds();
   }));
 }
 
 void addstatus(BuildContext ctx) {
-  Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return  StatusScreen();
   }));
 }

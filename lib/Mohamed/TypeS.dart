@@ -89,7 +89,7 @@ class TypeS extends StatelessWidget {
               borderRadius: BorderRadius.circular(30.r),
               ),
           child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () => addstatus(context),
             backgroundColor: Colors.white,
             child:  Padding(
               padding:  REdgeInsets.only(left: 4),
