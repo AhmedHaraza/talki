@@ -45,7 +45,7 @@ class _my_mainState extends State<my_main> {
               addstatus(context);
             } else if (currentIndex == 1) 
             {
-              
+              CallSomePeople(context);
             } else if (currentIndex == 2) {
               addyourgroup(context);
             }

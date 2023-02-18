@@ -16,7 +16,7 @@ class Home_Screen_Messenger extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
-    onTap: () => FocusScope.of(context).unfocus(),
+    onTap: () =>  FocusScope.of(context).unfocus(),
       child: Scaffold(
       backgroundColor: const Color(0xff161616),
         endDrawer: SideMenu(),

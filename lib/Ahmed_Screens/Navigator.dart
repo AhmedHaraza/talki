@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/ChatScreen/main_chat_screen.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/ChatWallPaperScreen/chatwallpaper_screen.dart';
+import 'package:graduation_project_my_own_talki/Abdo_Screen/ContactsScreen/contacts_screen.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/EditProfileScreen/edit_profile_screen.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/HideStatusScreen/hide_status_screen.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Home_Screen_Messenger/Home_Screen_Messenger.dart';
@@ -99,7 +100,7 @@ void addfriend(BuildContext ctx) {
 }
 
 void addyourgroup(BuildContext ctx) {
-  Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return const CreateGroup();
   }));
 }
@@ -141,7 +142,7 @@ void changepassword(BuildContext ctx) {
 }
 
 void Broadcastmessage(BuildContext ctx) {
-  Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return  const contectsmessegegroup();
   }));
 }
@@ -202,6 +203,11 @@ void ImageSolidincustomwallpaper(BuildContext ctx) {
 void circleAvatarinchangepassword(BuildContext ctx) {
   Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return  my_main();
+  }));
+}
+void CallSomePeople(BuildContext ctx) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
+    return  ContactsScreen();
   }));
 }
 

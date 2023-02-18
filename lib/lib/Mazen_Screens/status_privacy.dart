@@ -15,117 +15,124 @@ class _status_privacy extends State<status_privacy> {
   int _value = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xff161616),
-      appBar: AppBar(
-        elevation: 0.0,
-        toolbarHeight: 70.h,
+    return WillPopScope(
+      onWillPop: () async {
+        addstatus(context);
+        return true;
+      },
+      child: Scaffold(
         backgroundColor: const Color(0xff161616),
-        leading: IconButton(
-            onPressed: () => addstatus(context),
-            icon: Icon(
-              Icons.arrow_back,
-              color: const Color.fromRGBO(255, 75, 38, 1),
-              size: 30.sp,
-            )),
-        title: Text(
-          'Status Privacy',
-          style: TextStyle(fontSize: 20.sp),
+        appBar: AppBar(
+          elevation: 0.0,
+          toolbarHeight: 70.h,
+          backgroundColor: const Color(0xff161616),
+          leading: IconButton(
+              onPressed: () => addstatus(context),
+              icon: Icon(
+                Icons.arrow_back,
+                color: const Color.fromRGBO(255, 75, 38, 1),
+                size: 30.sp,
+              )),
+          title: Text(
+            'Status Privacy',
+            style: TextStyle(fontSize: 20.sp),
+          ),
         ),
-      ),
-      body: Container(
-        padding: REdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Divider(
-              color: Color(0xff6E6E6E),
-            ),
-            Padding(
-              padding: REdgeInsets.all(15),
-              child: Text(
-                'Who can see my status update',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  color: Colors.grey,
+        body: Container(
+          padding: REdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Divider(
+                color: Color(0xff6E6E6E),
+              ),
+              Padding(
+                padding: REdgeInsets.all(15),
+                child: Text(
+                  'Who can see my status update',
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: REdgeInsets.only(left: 45),
-              child: Row(
-                children: [
-                  Transform.scale(
-                    scale: 1.sp,
-                    child: Radio(
-                      fillColor: MaterialStateProperty.all(Colors.blue),
-                      value: 1,
-                      groupValue: _value,
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            _value = value!;
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.0.w,
-                  ),
-                  Container(
-                    margin: REdgeInsets.only(left: 24),
-                    child: Text(
-                      "My Contacts",
-                      style: TextStyle(color: Colors.white, fontSize: 20.sp),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: REdgeInsets.only(left: 45),
-              child: Row(
-                children: [
-                  Transform.scale(
-                    scale: 1.sp,
-                    child: Radio(
+              Container(
+                margin: REdgeInsets.only(left: 45),
+                child: Row(
+                  children: [
+                    Transform.scale(
+                      scale: 1.sp,
+                      child: Radio(
                         fillColor: MaterialStateProperty.all(Colors.blue),
-                        value: 2,
+                        value: 1,
                         groupValue: _value,
-                        onChanged: ((Value) {
-                          setState(() {
-                            _value = Value!;
-                          });
-                        })),
-                  ),
-                  SizedBox(
-                    width: 10.0.w,
-                  ),
-                  Container(
-                    margin: REdgeInsets.only(left: 24),
-                    child: InkWell(
-                      onTap: () => Mycontactsexceptinstatusprivacy(context),
-                      child: Text(
-                        'My contacts except...',
-                        style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                        onChanged: (value) {
+                          setState(
+                            () {
+                              _value = value!;
+                            },
+                          );
+                        },
                       ),
                     ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: REdgeInsets.all(15),
-              child: Text(
-                'Changes to your privacy setting won’t affect status updates that you’ve sent already ',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  color: Colors.grey,
+                    SizedBox(
+                      width: 10.0.w,
+                    ),
+                    Container(
+                      margin: REdgeInsets.only(left: 24),
+                      child: Text(
+                        "My Contacts",
+                        style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                      ),
+                    )
+                  ],
                 ),
               ),
-            ),
-          ],
+              Container(
+                margin: REdgeInsets.only(left: 45),
+                child: Row(
+                  children: [
+                    Transform.scale(
+                      scale: 1.sp,
+                      child: Radio(
+                          fillColor: MaterialStateProperty.all(Colors.blue),
+                          value: 2,
+                          groupValue: _value,
+                          onChanged: ((Value) {
+                            setState(() {
+                              _value = Value!;
+                            });
+                          })),
+                    ),
+                    SizedBox(
+                      width: 10.0.w,
+                    ),
+                    Container(
+                      margin: REdgeInsets.only(left: 24),
+                      child: InkWell(
+                        onTap: () => Mycontactsexceptinstatusprivacy(context),
+                        child: Text(
+                          'My contacts except...',
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.sp),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: REdgeInsets.all(15),
+                child: Text(
+                  'Changes to your privacy setting won’t affect status updates that you’ve sent already ',
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

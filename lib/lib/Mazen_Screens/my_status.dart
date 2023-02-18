@@ -10,28 +10,35 @@ class mystatus extends StatefulWidget {
   @override
   State<mystatus> createState() => _mystatusstate();
 }
+
 class _mystatusstate extends State<mystatus> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(22, 22, 22, 1),
-      appBar: AppBar(
+    return WillPopScope(
+      onWillPop: () async{
+        addstatus(context);
+        return false;
+      } ,
+      child: Scaffold(
+        backgroundColor: const Color.fromRGBO(22, 22, 22, 1),
+        appBar: AppBar(
           toolbarHeight: 70.h,
           elevation: 0.0,
-        backgroundColor:  const Color(0xff26282C),
-        leading: IconButton(
-            onPressed: ()=> addstatus(context),
-            icon:  Icon(
-              Icons.arrow_back,
-               size: 30.sp,
-              color: const Color.fromRGBO(255, 75, 38, 1),
-            )),
-        title: Text(
-          'My status',
-          style: TextStyle(fontSize: 20.sp),
+          backgroundColor: const Color(0xff26282C),
+          leading: IconButton(
+              onPressed: () => addstatus(context),
+              icon: Icon(
+                Icons.arrow_back,
+                size: 30.sp,
+                color: const Color.fromRGBO(255, 75, 38, 1),
+              )),
+          title: Text(
+            'My status',
+            style: TextStyle(fontSize: 20.sp),
+          ),
         ),
+        body: Container(),
       ),
-     body: Container(),
     );
   }
 }

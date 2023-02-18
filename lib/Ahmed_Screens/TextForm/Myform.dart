@@ -19,8 +19,7 @@ class MyForme extends StatelessWidget {
         style: TextStyle(
             color: const Color.fromRGBO(95, 90, 90, 1.0),
             fontSize: 12.sp,
-            fontWeight: FontWeight.w500
-            ),
+            fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(10),
           enabledBorder: OutlineInputBorder(
@@ -43,7 +42,6 @@ class MyForme extends StatelessWidget {
             child: addicon,
           ),
           prefixIcon: icon,
-          
         ),
         keyboardType: InputType,
       ),
@@ -101,7 +99,6 @@ class Myform2 extends StatelessWidget {
     );
   }
 }
-
 class Searchforcontents extends StatelessWidget {
   const Searchforcontents({Key? key}) : super(key: key);
   @override
@@ -110,10 +107,10 @@ class Searchforcontents extends StatelessWidget {
         height: 40.h,
         child: TextFormField(
           style: TextStyle(
-              color: const Color.fromRGBO(255, 75, 38, 1.0),
-               fontSize: 12.sp,
-               fontWeight: FontWeight.bold,
-               ),
+            color: const Color.fromRGBO(255, 75, 38, 1.0),
+            fontSize: 12.sp,
+            fontWeight: FontWeight.bold,
+          ),
           decoration: InputDecoration(
               contentPadding: REdgeInsets.only(left: 20),
               enabledBorder:
@@ -123,7 +120,7 @@ class Searchforcontents extends StatelessWidget {
               ),
               filled: true,
               fillColor: Colors.white,
-              hintText: "Search for contents",
+              hintText: "Search for contacts",
               hintStyle: const TextStyle(
                 color: Color.fromRGBO(255, 75, 38, 1.0),
                 fontWeight: FontWeight.w800,
@@ -147,8 +144,8 @@ class SearchforGroup extends StatelessWidget {
     return Container(
       height: 40.h,
       child: TextFormField(
-        style:  TextStyle(
-            color: const Color.fromRGBO(255, 75, 38, 1.0), 
+        style: TextStyle(
+            color: const Color.fromRGBO(255, 75, 38, 1.0),
             fontSize: 12.sp,
             fontWeight: FontWeight.bold),
         decoration: InputDecoration(
@@ -186,11 +183,11 @@ class Search extends StatelessWidget {
     return Container(
       height: 40.h,
       child: TextFormField(
-        style:  TextStyle(
+        style: TextStyle(
           color: const Color.fromRGBO(255, 75, 38, 1.0),
           fontSize: 12.sp,
           fontWeight: FontWeight.bold,
-          ),
+        ),
         decoration: InputDecoration(
             contentPadding: REdgeInsets.only(left: 20),
             enabledBorder: OutlineInputBorder(
@@ -225,11 +222,10 @@ class Search_chat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style:  TextStyle(
-        color: const Color.fromRGBO(255, 255, 255, 0.5),
-        fontSize: 12.sp,
-        fontWeight: FontWeight.bold
-      ),
+      style: TextStyle(
+          color: const Color.fromRGBO(255, 255, 255, 0.5),
+          fontSize: 12.sp,
+          fontWeight: FontWeight.bold),
       decoration: InputDecoration(
           contentPadding: REdgeInsets.only(left: 15),
           enabledBorder: OutlineInputBorder(

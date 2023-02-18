@@ -14,94 +14,100 @@ class contectsmessegegroup extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: const Color(0xff161616),
-        resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: REdgeInsets.only(top: 50, left: 20),
-                child: Text(
-                  "People who added",
-                  style: MyThemeData.Addfriends,
-                ),
-              ),
-              SizedBox(height: 60.h),
-              Padding(
-                padding: REdgeInsets.only(left: 20, right: 20),
-                child: Container(
-                    margin: REdgeInsets.only(right: 20),
-                    child: const Searchforcontents()),
-              ),
-              SizedBox(height: 10.h),
-              Padding(
-                padding: REdgeInsets.only(left: 20),
-                child: Text(
-                  "Select Contact",
-                  style: MyThemeData.Addfriends,
-                ),
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: Padding(
-          padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
-          child: SizedBox(
-            height: 210.h,
+      child: WillPopScope(
+        onWillPop: () async {
+          Backandsubmitineditprofile(context);
+          return true;
+        } ,
+        child: Scaffold(
+          backgroundColor: const Color(0xff161616),
+          resizeToAvoidBottomInset: false,
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: REdgeInsets.only(right: 20, left: 20),
+                  padding: REdgeInsets.only(top: 50, left: 20),
+                  child: Text(
+                    "People who added",
+                    style: MyThemeData.Addfriends,
+                  ),
+                ),
+                SizedBox(height: 60.h),
+                Padding(
+                  padding: REdgeInsets.only(left: 20, right: 20),
                   child: Container(
-                      height: 130.h,
-                      color: Colors.white,
-                      child: Center(
-                        child: Padding(
-                          padding: REdgeInsets.only(left: 40, right: 40),
-                          child: Center(
-                            child: TextFormField(
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                  hintText: "Write a Text",
-                                  hintStyle: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w800),
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent)),
-                                  enabledBorder: const UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent))),
-                              keyboardType: TextInputType.multiline,
-                              maxLines: null,
-                              minLines: null,
+                      margin: REdgeInsets.only(right: 20),
+                      child: const Searchforcontents()),
+                ),
+                SizedBox(height: 10.h),
+                Padding(
+                  padding: REdgeInsets.only(left: 20),
+                  child: Text(
+                    "Select Contact",
+                    style: MyThemeData.Addfriends,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar: Padding(
+            padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
+            child: SizedBox(
+              height: 210.h,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: REdgeInsets.only(right: 20, left: 20),
+                    child: Container(
+                        height: 130.h,
+                        color: Colors.white,
+                        child: Center(
+                          child: Padding(
+                            padding: REdgeInsets.only(left: 40, right: 40),
+                            child: Center(
+                              child: TextFormField(
+                                textAlign: TextAlign.center,
+                                decoration: InputDecoration(
+                                    hintText: "Write a Text",
+                                    hintStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w800),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.transparent)),
+                                    enabledBorder: const UnderlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.transparent))),
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                minLines: null,
+                              ),
                             ),
                           ),
-                        ),
-                      )),
-                ),
-                SizedBox(height: 20.h),
-                Padding(
-                  padding: REdgeInsets.only(right: 20, left: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Send the massage ",
-                        style: MyThemeData.Send_the_massage,
-                      ),
-                      InkWell(
-                        child: const CircleAvatar_turn_right(),
-                        onTap: () => Backandsubmitineditprofile(context),
-                        ),
-                    ],
+                        )),
                   ),
-                )
-              ],
+                  SizedBox(height: 20.h),
+                  Padding(
+                    padding: REdgeInsets.only(right: 20, left: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Send the massage ",
+                          style: MyThemeData.Send_the_massage,
+                        ),
+                        InkWell(
+                          child: const CircleAvatar_turn_right(),
+                          onTap: () => Backandsubmitineditprofile(context),
+                          ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

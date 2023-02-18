@@ -15,48 +15,39 @@ class Addfrinds extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          backgroundColor: const Color(0xff161616),
-          resizeToAvoidBottomInset: false,
-          body: Padding(
-            padding: REdgeInsets.only(top: 50, left: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Add friends",
-                  style: MyThemeData.Addfriends,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Container(
-                    height: 40.h,
-                    margin: REdgeInsets.only(right: 20),
-                    child: const Search()),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  "Contact",
-                  style: MyThemeData.Addfriends,
-                ),
-              ],
-            ),
-          ),
-          bottomNavigationBar: Container(
-            padding: REdgeInsets.only(bottom: 20),
-            color: const Color(0xff161616),
-            child: InkWell(
-              child: Text(
-                "Back",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xff5F5A5A),
-                  fontSize: 16.sp,
-                ),
+        child: WillPopScope(
+          onWillPop: () async{
+            Backandsubmitineditprofile(context);
+            return true;
+          },
+          child: Scaffold(
+            backgroundColor: const Color(0xff161616),
+            resizeToAvoidBottomInset: false,
+            body: Padding(
+              padding: REdgeInsets.only(top: 50, left: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Add friends",
+                    style: MyThemeData.Addfriends,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Container(
+                      height: 40.h,
+                      margin: REdgeInsets.only(right: 20),
+                      child: const Search()),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                    "Contact",
+                    style: MyThemeData.Addfriends,
+                  ),
+                ],
               ),
-              onTap: () => Backandsubmitineditprofile(context),
             ),
           ),
         ));
