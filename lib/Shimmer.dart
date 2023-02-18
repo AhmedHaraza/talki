@@ -10,7 +10,7 @@ class MyHomepage extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(
         Duration(
-          seconds: 5,
+          seconds: 3,
         ),
         () => CircleAvatar_go_to_sin_in(context));
     return Scaffold(
