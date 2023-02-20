@@ -81,7 +81,7 @@ class _Reset_PasswordState extends State<Reset_Password> {
                           });
                         },
                         child: Icon(
-                            pass ? Icons.visibility_off : Icons.visibility,
+                            pass ? Icons.visibility : Icons.visibility_off,
                             color: const Color(0xff5f5a5a)),
                       ),
                       prefixIcon:
@@ -95,7 +95,7 @@ class _Reset_PasswordState extends State<Reset_Password> {
                       filled: true,
                       fillColor: const Color(0xff262626),
                     ),
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.visiblePassword,
                   ),
                 ),
                 Container(
@@ -117,7 +117,7 @@ class _Reset_PasswordState extends State<Reset_Password> {
                           });
                         },
                         child: Icon(
-                            pass2 ? Icons.visibility_off : Icons.visibility,
+                            pass2 ? Icons.visibility : Icons.visibility_off,
                             color: const Color(0xff5f5a5a)),
                       ),
                       prefixIcon:
@@ -129,7 +129,7 @@ class _Reset_PasswordState extends State<Reset_Password> {
                         borderRadius: BorderRadius.circular(15.0.r),
                       ),
                     ),
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.visiblePassword,
                   ),
                 ),
                 SizedBox(height: 40.h),

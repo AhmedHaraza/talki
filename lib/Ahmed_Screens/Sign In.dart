@@ -6,6 +6,7 @@ import 'package:graduation_project_my_own_talki/Ahmed_Screens/CircleAvatar/Circl
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/TextForm/Myform.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/my_theme.dart';
+
 class Sign_In extends StatefulWidget {
   static const String Route_Sign_In = 'Sing In';
   @override
@@ -13,10 +14,13 @@ class Sign_In extends StatefulWidget {
 }
 
 class _Sign_InState extends State<Sign_In> {
+
+  bool _visState = true;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-    onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(22, 22, 22, 1.0),
         body: SingleChildScrollView(
@@ -40,32 +44,37 @@ class _Sign_InState extends State<Sign_In> {
                     Container(
                       child: MyForme(
                           'Email or Phone Number',
-                          icon:  Icon(Icons.person,
-                          color:  const Color.fromRGBO(95, 90, 90, 1.0),
-                          size: 20.sp,
+                          icon: Icon(
+                            Icons.person,
+                            color: const Color.fromRGBO(95, 90, 90, 1.0),
+                            size: 20.sp,
                           ),
                           TextInputType.emailAddress),
                     ),
                     SizedBox(height: 21.h),
                     Container(
                       child: Myform2(
-                          'Password',
-                          Icon(
-                            Icons.lock,
+                        'Password',
+                        Icon(
+                          Icons.lock,
+                          size: 20.sp,
+                          color: const Color.fromRGBO(95, 90, 90, 1.0),
+                        ),
+                        TextInputType.visiblePassword,
+                        addicon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _visState = !_visState;
+                            });
+                          },
+                          icon: (Icon(
+                            _visState ? Icons.visibility : Icons.visibility_off,
                             size: 20.sp,
-                            color: const Color.fromRGBO(95, 90, 90, 1.0),
-                          ),
-                          TextInputType.visiblePassword,
-                          addicon: IconButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            icon: (Icon(
-                              Icons.visibility,
-                              size: 20.sp,
-                            )),
-                            color: const Color.fromRGBO(95, 90, 90, 1.0),
                           )),
+                          color: const Color.fromRGBO(95, 90, 90, 1.0),
+                        ),
+                        Visibilty_Paswword: _visState,
+                      ),
                     ),
                     SizedBox(height: 12.h),
                     Row(
@@ -84,7 +93,7 @@ class _Sign_InState extends State<Sign_In> {
                             'Forget Password',
                             style: MyThemeData.Page_Sign_in,
                           ),
-                          onTap: ()=>  forgetpass(context),
+                          onTap: () => forgetpass(context),
                         ),
                       ],
                     ),
@@ -117,8 +126,8 @@ class _Sign_InState extends State<Sign_In> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Image(
-                            image:
-                                AssetImage('assets/image/logos_google-icon.png')),
+                            image: AssetImage(
+                                'assets/image/logos_google-icon.png')),
                         SizedBox(
                           width: 17.w,
                         ),

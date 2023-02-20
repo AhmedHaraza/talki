@@ -21,7 +21,9 @@ class _ChangePassScrenState extends State<ChangePassScren> {
 
   var TextC = const Color(0xff5F5A5A);
 
-  bool visState = true;
+  bool visState1 = true;
+  bool visState2 = true;
+  bool visState3 = true;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -64,7 +66,6 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                     style: TextStyle(color: Colors.white, fontSize: 32.sp),
                   ),
                   Container(
-                    // padding: EdgeInsets.fromLTRB(0, 1, 1, 5),
                     margin: REdgeInsets.all(5),
                     child: TextField(
                       decoration: InputDecoration(
@@ -89,11 +90,11 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
-                                visState = !visState;
+                                visState1 = !visState1;
                               });
                             },
                             icon: Icon(
-                              visState ? Icons.visibility : Icons.visibility_off,
+                              visState1 ? Icons.visibility : Icons.visibility_off,
                               color: TextC,
                             ),
                           ),
@@ -101,12 +102,10 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                       ),
                       style: TextStyle(fontSize: 18.sp, color: TextC),
                       keyboardType: TextInputType.visiblePassword,
-                      obscureText: visState,
+                      obscureText: visState1,
                     ),
-                    // borderRadius: BorderRadius.circular(4),
                   ),
                   Container(
-                    // padding: EdgeInsets.fromLTRB(0, 1, 1, 5),
                     margin: REdgeInsets.all(5),
                     child: TextField(
                       decoration: InputDecoration(
@@ -131,11 +130,11 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
-                                visState = !visState;
+                                visState2 = !visState2;
                               });
                             },
                             icon: Icon(
-                              visState ? Icons.visibility : Icons.visibility_off,
+                              visState2 ? Icons.visibility : Icons.visibility_off,
                               color: TextC,
                             ),
                           ),
@@ -143,12 +142,10 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                       ),
                       style: TextStyle(fontSize: 18.sp, color: TextC),
                       keyboardType: TextInputType.visiblePassword,
-                      obscureText: visState,
+                      obscureText: visState2,
                     ),
-                    // borderRadius: BorderRadius.circular(4),
                   ),
                   Container(
-                    // padding: EdgeInsets.fromLTRB(0, 1, 1, 5),
                     margin: REdgeInsets.all(5),
                     child: TextField(
                       decoration: InputDecoration(
@@ -173,11 +170,11 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
-                                visState = !visState;
+                                visState3 = !visState3;
                               });
                             },
                             icon: Icon(
-                              visState ? Icons.visibility : Icons.visibility_off,
+                              visState3 ? Icons.visibility : Icons.visibility_off,
                               color: TextC,
                             ),
                           ),
@@ -185,9 +182,8 @@ class _ChangePassScrenState extends State<ChangePassScren> {
                       ),
                       style: TextStyle(fontSize: 18.sp, color: TextC),
                       keyboardType: TextInputType.visiblePassword,
-                      obscureText: visState,
+                      obscureText: visState3,
                     ),
-                    // borderRadius: BorderRadius.circular(4),
                   ),
                   const SizedBox(height: 20),
                   Container(

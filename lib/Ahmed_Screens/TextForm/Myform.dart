@@ -57,7 +57,7 @@ class Myform2 extends StatelessWidget {
   TextInputType InputType;
 
   Myform2(this.name, this.Lock, this.InputType,
-      {this.addicon, Visibilty_Paswword});
+      {this.addicon, required this.Visibilty_Paswword});
 
   @override
   Widget build(BuildContext context) {

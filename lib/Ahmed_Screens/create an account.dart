@@ -14,7 +14,8 @@ class create_an_account extends StatefulWidget {
 }
 
 class _create_an_accountState extends State<create_an_account> {
-  bool Paswword_Visibilty = true;
+  bool _visState1 = true;
+  bool _visState2 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -88,10 +89,48 @@ class _create_an_accountState extends State<create_an_account> {
                       width: MediaQuery.of(context).size.width / 2.4,
                       child: TextFormField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person,color:  Color.fromRGBO(95, 90, 90, 1.0),),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Color.fromRGBO(95, 90, 90, 1.0),
+                          ),
+                          filled: true,
+                          fillColor: const Color.fromRGBO(44, 44, 44, 1.0),
+                          hintText: 'First Name',
+                          hintStyle: TextStyle(
+                            fontSize: 12.sp,
+                            color: Color.fromRGBO(95, 90, 90, 1.0),
+                            fontWeight: FontWeight.bold,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.r),
+                            borderSide: BorderSide(
+                                color: MyThemeData.colorgray, width: 3.w),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.r),
+                            borderSide: BorderSide(
+                                color: MyThemeData.colorgray, width: 3.w),
+                          ),
+                          contentPadding: EdgeInsets.all(10),
+                        ),
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(
+                            color: Color.fromRGBO(95, 90, 90, 1.0),
+                            fontSize: 14.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40.h,
+                      width: MediaQuery.of(context).size.width / 2.4,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: Color.fromRGBO(95, 90, 90, 1.0),
+                            ),
                             filled: true,
                             fillColor: const Color.fromRGBO(44, 44, 44, 1.0),
-                            hintText: 'First Name',
+                            hintText: 'Last Name',
                             hintStyle: TextStyle(
                               fontSize: 12.sp,
                               color: Color.fromRGBO(95, 90, 90, 1.0),
@@ -107,40 +146,11 @@ class _create_an_accountState extends State<create_an_account> {
                               borderSide: BorderSide(
                                   color: MyThemeData.colorgray, width: 3.w),
                             ),
-                            contentPadding: EdgeInsets.all(10),),
+                            contentPadding: REdgeInsets.all(10)),
                         keyboardType: TextInputType.text,
                         style: TextStyle(
                             color: Color.fromRGBO(95, 90, 90, 1.0),
                             fontSize: 14.sp),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40.h,
-                      width: MediaQuery.of(context).size.width / 2.4,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person,color:  Color.fromRGBO(95, 90, 90, 1.0),),
-                            filled: true,
-                            fillColor: const Color.fromRGBO(44, 44, 44, 1.0),
-                            hintText: 'Last Name',
-                            hintStyle: TextStyle(
-                              fontSize: 12.sp,
-                              color:  Color.fromRGBO(95, 90, 90, 1.0),
-                              fontWeight: FontWeight.bold,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.r),
-                              borderSide: BorderSide(
-                                  color: MyThemeData.colorgray, width: 3.w),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.r),
-                              borderSide: BorderSide(
-                                  color: MyThemeData.colorgray, width: 3.w),
-                            ),
-                            contentPadding: REdgeInsets.all(10)),
-                        keyboardType: TextInputType.text,
-                        style: TextStyle(color:  Color.fromRGBO(95, 90, 90, 1.0), fontSize: 14.sp),
                       ),
                     ),
                   ],
@@ -149,62 +159,67 @@ class _create_an_accountState extends State<create_an_account> {
                 Padding(
                   padding: REdgeInsets.only(left: 20, right: 20),
                   child: Myform2(
-                      'Password',
-                      const Icon(
-                        Icons.lock,
-                        size: 20,
-                        color: Color.fromRGBO(95, 90, 90, 1.0),
-                      ),
-                      TextInputType.visiblePassword,
-                      Visibilty_Paswword: !Paswword_Visibilty,
-                      addicon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            Paswword_Visibilty == !Paswword_Visibilty;
-                          });
-                        },
-                        icon: (const Icon(
-                          Icons.visibility,
-                          size: 20,
-                        )),
-                        color: const Color.fromRGBO(95, 90, 90, 1.0),
+                    'Password',
+                    const Icon(
+                      Icons.lock,
+                      size: 20,
+                      color: Color.fromRGBO(95, 90, 90, 1.0),
+                    ),
+                    TextInputType.visiblePassword,
+                    addicon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _visState1 = !_visState1;
+                        });
+                      },
+                      icon: (Icon(
+                        _visState1 ? Icons.visibility : Icons.visibility_off,
+                        size: 20.sp,
                       )),
+                      color: const Color.fromRGBO(95, 90, 90, 1.0),
+                    ),
+                    Visibilty_Paswword: _visState1,
+                  ),
                 ),
                 SizedBox(height: 10.h),
                 Center(
                   child: Padding(
                     padding: REdgeInsets.only(left: 20, right: 20),
                     child: Myform2(
-                        'Confirm Password',
-                        const Icon(
-                          Icons.lock,
-                          size: 20,
-                          color: Color.fromRGBO(95, 90, 90, 1.0),
-                        ),
-                        TextInputType.visiblePassword,
-                        addicon: IconButton(
-                          onPressed: () {
-                            setState(() {});
-                          },
-                          icon: (const Icon(
-                            Icons.visibility,
-                            size: 20,
-                          )),
-                          color: const Color.fromRGBO(95, 90, 90, 1.0),
+                      'Confirm Password',
+                      const Icon(
+                        Icons.lock,
+                        size: 20,
+                        color: Color.fromRGBO(95, 90, 90, 1.0),
+                      ),
+                      TextInputType.visiblePassword,
+                      addicon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _visState2 = !_visState2;
+                          });
+                        },
+                        icon: (Icon(
+                          _visState2 ? Icons.visibility : Icons.visibility_off,
+                          size: 20.sp,
                         )),
+                        color: const Color.fromRGBO(95, 90, 90, 1.0),
+                      ),
+                      Visibilty_Paswword: _visState2,
+                    ),
                   ),
                 ),
                 SizedBox(height: 10.h),
                 Padding(
                   padding: REdgeInsets.only(left: 20, right: 20),
-                  child: Myform2(
+                  child: MyForme(
                     'Birthdate dd / mm / yy',
-                    const Icon(
+                    TextInputType.datetime,
+                    icon: const Icon(
                       Icons.calendar_today,
                       size: 20,
                       color: Color.fromRGBO(95, 90, 90, 1.0),
                     ),
-                    TextInputType.visiblePassword,
                   ),
                 ),
                 SizedBox(height: 10.h),
