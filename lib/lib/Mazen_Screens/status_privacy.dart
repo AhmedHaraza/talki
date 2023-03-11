@@ -21,7 +21,6 @@ class _status_privacy extends State<status_privacy> {
         return true;
       },
       child: Scaffold(
-        backgroundColor: const Color(0xff161616),
         appBar: AppBar(
           elevation: 0.0,
           toolbarHeight: 70.h,
@@ -43,9 +42,9 @@ class _status_privacy extends State<status_privacy> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Divider(
-                color: Color(0xff6E6E6E),
-              ),
+              // const Divider(
+              //   color: Color(0xff6E6E6E),
+              // ),
               Padding(
                 padding: REdgeInsets.all(15),
                 child: Text(

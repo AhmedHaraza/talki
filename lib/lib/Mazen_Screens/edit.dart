@@ -17,7 +17,6 @@ class _editstate extends State<edit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: const Color.fromRGBO(28, 28, 28, 1),
           leading: IconButton(

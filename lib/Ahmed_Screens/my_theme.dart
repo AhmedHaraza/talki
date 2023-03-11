@@ -8,13 +8,23 @@ class MyThemeData {
   static const Color filetextfiled = Color.fromRGBO(95, 90, 90, 1.0);
   static const TextStyle fontSize = TextStyle(fontSize: 25);
   static const TextStyle fontWeight = TextStyle(fontWeight: FontWeight.w700);
+
   static ThemeData lightTheme = ThemeData(
-      scaffoldBackgroundColor: Colors.black,
+      scaffoldBackgroundColor: Colors.white,
       textTheme: TextTheme(
           headline1: TextStyle(
               fontSize: 32.sp,
               color: Colors.white,
               fontWeight: FontWeight.bold)));
+
+  static ThemeData darktheme = ThemeData(
+      scaffoldBackgroundColor: Color(0xff161616),
+      textTheme: TextTheme(
+          headline1: TextStyle(
+              fontSize: 32.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.bold)));
+
   static TextStyle Register = TextStyle(
       fontSize: 24.sp, fontWeight: FontWeight.w700, color: Colors.white);
   static TextStyle Text_Sin_in = TextStyle(

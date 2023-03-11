@@ -1,10 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors, constant_identifier_names, camel_case_types, sort_child_properties_last, avoid_unnecessary_containers, file_names, non_constant_identifier_names, deprecated_member_use
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/CircleAvatar/CircleAvatar.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/TextForm/Myform.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/my_theme.dart';
+import 'package:image_picker/image_picker.dart';
 
 class create_an_account extends StatefulWidget {
   static const String route_name_create_an_account = 'routename';
@@ -16,18 +20,23 @@ class create_an_account extends StatefulWidget {
 class _create_an_accountState extends State<create_an_account> {
   bool _visState1 = true;
   bool _visState2 = true;
-
+  File? _image;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(
         onWillPop: () async {
-          CircleAvatar_go_to_sin_in(context);
-          return true;
+          final shouldpop = await showMyDialog();
+          //CircleAvatar_go_to_sin_in(context);
+          if (shouldpop == false) {
+            return false;
+          } else {
+            CircleAvatar_go_to_sin_in(context);
+            return true;
+          }
         },
         child: Scaffold(
-          backgroundColor: const Color.fromRGBO(22, 22, 22, 1.0),
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -54,16 +63,54 @@ class _create_an_accountState extends State<create_an_account> {
                     SizedBox(height: 4.h),
                   ],
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: Center(
+                Center(
+                  child: InkWell(
+                    onTap: () => showDialog(
+                        context: context,
+                        builder: (context) => Transform.translate(
+                              offset: Offset(0, -100),
+                              child: Container(
+                                margin: REdgeInsets.only(right: 45, left: 45),
+                                child: SimpleDialog(
+                                  backgroundColor: Color(0xff262626),
+                                  children: [
+                                    ListTile(
+                                      onTap: pickImage,
+                                      title: Text(
+                                        "Take a Photo",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff5F5A5A)),
+                                      ),
+                                      leading: Icon(
+                                        Icons.photo_camera,
+                                        color: Color(0xff5F5A5A),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      onTap: pickGalaey,
+                                      title: Text("Upload Photo",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xff5F5A5A))),
+                                      leading: Icon(Icons.photo_library,
+                                          color: Color(0xff5F5A5A)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
                     child: CircleAvatar(
+                      backgroundImage:
+                          _image == null ? null : FileImage(_image!),
                       child: Padding(
                         padding: const EdgeInsets.only(right: 5, bottom: 3),
-                        child: Icon(
-                          Icons.add_a_photo,
-                          size: 40.sp,
-                        ),
+                        child: _image == null
+                            ? Icon(
+                                Icons.add_a_photo,
+                                size: 40.sp,
+                              )
+                            : Container(),
                       ),
                       backgroundColor: const Color.fromRGBO(95, 90, 90, 1.0),
                       radius: 40.r,
@@ -85,10 +132,11 @@ class _create_an_accountState extends State<create_an_account> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      height: 40.h,
                       width: MediaQuery.of(context).size.width / 2.4,
                       child: TextFormField(
+                        maxLength: 20,
                         decoration: InputDecoration(
+                          counterText: "",
                           prefixIcon: Icon(
                             Icons.person,
                             color: Color.fromRGBO(95, 90, 90, 1.0),
@@ -120,10 +168,11 @@ class _create_an_accountState extends State<create_an_account> {
                       ),
                     ),
                     SizedBox(
-                      height: 40.h,
                       width: MediaQuery.of(context).size.width / 2.4,
                       child: TextFormField(
+                        maxLength: 20,
                         decoration: InputDecoration(
+                            counterText: "",
                             prefixIcon: Icon(
                               Icons.person,
                               color: Color.fromRGBO(95, 90, 90, 1.0),
@@ -335,18 +384,6 @@ class _create_an_accountState extends State<create_an_account> {
                                 AssetImage('assets/image/logos_facebook.png'))),
                   ],
                 ),
-                SizedBox(height: 12.h),
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      Select_Screen_Sin_In(context);
-                    },
-                    child: Text(
-                      'Back',
-                      style: MyThemeData.Text_Sin_in,
-                    ),
-                  ),
-                ),
                 Container(
                   margin: REdgeInsets.only(bottom: 30),
                 )
@@ -357,4 +394,41 @@ class _create_an_accountState extends State<create_an_account> {
       ),
     );
   }
+
+   void pickImage() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = File(image!.path);
+    });
+    Navigator.of(context, rootNavigator: true).pop('dialog');
+  }
+
+  void pickGalaey() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = File(image!.path);
+      Navigator.of(context, rootNavigator: true).pop('dialog');
+    });
+  }
+
+  Future<bool?> showMyDialog() => showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => AlertDialog(
+            backgroundColor: Color(0xff262626),
+            title: Text('Do you want to go back ?',
+                style: TextStyle(color: Color(0xff5F5A5A))),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.pop(context, false),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Color(0xff5F5A5A)),
+                  )),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: Text('Yes', style: TextStyle(color: Color(0xff5F5A5A))),
+              ),
+            ],
+          ));
 }

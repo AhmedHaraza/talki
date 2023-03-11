@@ -24,7 +24,6 @@ class _Reset_PasswordState extends State<Reset_Password> {
           return true;
         },
         child: Scaffold(
-          backgroundColor: const Color(0xff161616),
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

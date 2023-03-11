@@ -12,7 +12,6 @@ class _Video_Call_GroupState extends State<Video_Call_Group> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(        
-        backgroundColor: Colors.black,
         body:
         SingleChildScrollView(
          scrollDirection: Axis.vertical, 

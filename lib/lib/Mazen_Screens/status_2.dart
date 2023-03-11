@@ -1,17 +1,27 @@
 // ignore_for_file: constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace, must_be_immutable
 
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
+import 'package:image_picker/image_picker.dart';
 
-class StatusScreen extends StatelessWidget {
+class StatusScreen extends StatefulWidget {
   static const String route_StatusScreen = 'StatusScreen,';
   StatusScreen({super.key});
 
+  @override
+  State<StatusScreen> createState() => _StatusScreenState();
+}
+
+class _StatusScreenState extends State<StatusScreen> {
   List<String> items = [
     'Status privacy',
     'Settings',
   ];
+ File? _image;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -20,7 +30,6 @@ class StatusScreen extends StatelessWidget {
         return  false;
       },
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(22, 22, 22, 1),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -129,7 +138,13 @@ class StatusScreen extends StatelessWidget {
                 backgroundColor: Color.fromRGBO(30, 30, 30, 1),
                 child: IconButton(
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed:() async {
+                    final result = await FilePicker.platform.pickFiles(
+                      allowMultiple: true,
+                      type: FileType.image,
+                    );
+                    if (result == null) return;
+                  },
                     icon: Icon(
                       Icons.image,
                       color: Color.fromRGBO(255, 75, 38, 1),
@@ -159,7 +174,7 @@ class StatusScreen extends StatelessWidget {
                 backgroundColor: Color.fromRGBO(30, 30, 30, 1),
                 child: IconButton(
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed:pickImage ,
                     icon: Icon(
                       Icons.photo_camera,
                       size: 25.sp,
@@ -172,5 +187,13 @@ class StatusScreen extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
+  }
+
+  void pickImage() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = File(image!.path);
+       Navigator.of(context, rootNavigator: true).pop('dialog');
+    });
   }
 }

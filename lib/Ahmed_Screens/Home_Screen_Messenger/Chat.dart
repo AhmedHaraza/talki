@@ -31,7 +31,6 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          backgroundColor: const Color(0xff161616),
           body: Padding(
             padding: REdgeInsets.only(top: 50),
             child: Column(

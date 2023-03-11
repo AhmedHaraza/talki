@@ -16,7 +16,6 @@ class _Group_InfoState extends State<Group_Info> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(        
-        backgroundColor: Colors.black,
         body:Column(
         children: <Widget> [
         SizedBox(height: 40.h),

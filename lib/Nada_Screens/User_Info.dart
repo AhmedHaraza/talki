@@ -15,7 +15,6 @@ class _User_InfoState extends State<User_Info> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(        
-        backgroundColor: Colors.black,
         body:Column(
         children: <Widget> [
         SizedBox(height: 40.h),

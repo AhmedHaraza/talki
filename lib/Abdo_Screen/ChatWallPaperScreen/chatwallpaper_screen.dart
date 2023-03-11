@@ -11,7 +11,6 @@ class ChatWallPaperScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff161616),
       appBar: AppBar(
         toolbarHeight: 50.h,
         backgroundColor: const Color(0xff1C1C1C),

@@ -15,7 +15,6 @@ class _brightState extends State<bright> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromRGBO(22, 22, 22, 1),
         appBar: AppBar(
           toolbarHeight: 50.h,
           backgroundColor: const Color.fromRGBO(28, 28, 28, 1),

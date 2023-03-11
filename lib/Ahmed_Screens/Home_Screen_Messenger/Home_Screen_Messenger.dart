@@ -18,7 +18,6 @@ class Home_Screen_Messenger extends StatelessWidget {
     return GestureDetector(
     onTap: () =>  FocusScope.of(context).unfocus(),
       child: Scaffold(
-      backgroundColor: const Color(0xff161616),
         endDrawer: SideMenu(),
         resizeToAvoidBottomInset: false,
         body: Column(

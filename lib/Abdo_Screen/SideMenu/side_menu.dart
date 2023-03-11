@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/SideMenu/navigation_control_tabs.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/SideMenu/user_info.dart';
+import 'package:graduation_project_my_own_talki/provider/myprovider.dart';
+import 'package:provider/provider.dart';
 
 class SideMenu extends StatefulWidget {
   SideMenu({super.key});
-
   @override
   State<SideMenu> createState() => _SideMenuState();
 }
 
 class _SideMenuState extends State<SideMenu> {
-  bool darkMode = false;
+  bool lightmode = false;
 
   bool notifications = false;
 
@@ -21,6 +22,8 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
+    myprovider provider = Provider.of<myprovider>(context);
+
     return Drawer(
       width: MediaQuery.of(context).size.width / 1.2,
       backgroundColor: const Color(0xff161616),
@@ -122,19 +125,20 @@ class _SideMenuState extends State<SideMenu> {
             Padding(
               padding: const EdgeInsets.only(top: 3),
               child: Icon(
-                Icons.dark_mode,
+                Icons.light_mode,
                 color: Colors.white,
                 size: 16.sp,
               ),
             ),
-            'Dark Mode',
+            'Light Mode',
             Switch(
               onChanged: (bool value) {
                 setState(() {
-                  darkMode = value;
+                  lightmode = value;
                 });
+                lightmode? provider.changeTheme('light') :provider.changeTheme('dark') ;
               },
-              value: darkMode,
+              value: lightmode,
               activeTrackColor: orange,
               thumbColor: MaterialStateProperty.all(Colors.white),
             ),

@@ -21,7 +21,6 @@ class Addfrinds extends StatelessWidget {
             return true;
           },
           child: Scaffold(
-            backgroundColor: const Color(0xff161616),
             resizeToAvoidBottomInset: false,
             body: Padding(
               padding: REdgeInsets.only(top: 50, left: 20),

@@ -12,7 +12,6 @@ class _Video_Call_UserState extends State<Video_Call_User> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(        
-        backgroundColor: Colors.black,
         body:
         SingleChildScrollView(
         child: Column(

@@ -1,30 +1,45 @@
 // ignore_for_file: constant_identifier_names, sized_box_for_whitespace
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/EditProfileScreen/custom_shape.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/EditProfileScreen/data_field.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/EditProfileScreen/user_info.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-
-class EditProfileScreen extends StatelessWidget {
-    static const String route_EditProfileScreen = 'EditProfileScreen';
+class EditProfileScreen extends StatefulWidget {
+  static const String route_EditProfileScreen = 'EditProfileScreen';
   const EditProfileScreen({super.key});
 
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  File? _image;
+  final item = ['Male', 'Female'];
+  String value = 'Male';
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(
-        onWillPop: () async{
-          Backandsubmitineditprofile(context);
-          return true;
+        onWillPop: () async {
+          final shouldpop = await showMyDialog();
+          if (shouldpop == false) {
+            return false;
+          } else {
+            Backandsubmitineditprofile(context);
+            return true;
+          }
         },
         child: Scaffold(
+          backgroundColor: const Color.fromRGBO(22, 22, 22, 1.0),
           resizeToAvoidBottomInset: true,
-          backgroundColor: const Color(0xff161616),
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(
@@ -33,7 +48,7 @@ class EditProfileScreen extends StatelessWidget {
               child: Stack(
                 children: [
                   CustomPaint(
-                    size: Size(MediaQuery.of(context).size.width,220.sp),
+                    size: Size(MediaQuery.of(context).size.width, 220.sp),
                     painter: MyPainter(),
                   ),
                   Container(
@@ -45,13 +60,22 @@ class EditProfileScreen extends StatelessWidget {
                         Stack(
                           children: [
                             Container(
-                              margin:  REdgeInsets.all(8),
+                              margin: REdgeInsets.all(8),
                               width: 80.w,
                               height: 80.h,
                               child: InkWell(
-                                onTap: (){},
-                                child: const CircleAvatar()
-                                ),
+                                  onTap: () {},
+                                  child: CircleAvatar(
+                                      backgroundImage: _image == null
+                                          ? null
+                                          : FileImage(_image!),
+                                      backgroundColor: Color(0xff4D5151),
+                                      child: _image == null
+                                          ? Icon(
+                                              Icons.person,
+                                              size: 60.sp,
+                                            )
+                                          : Container())),
                             ),
                             Positioned(
                               left: 55.sp,
@@ -68,8 +92,60 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ),
                                 child: InkWell(
-                                  onTap: (){},
-                                  child:  Icon(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            Transform.translate(
+                                              offset: Offset(0, -100),
+                                              child: Container(
+                                                margin: REdgeInsets.only(
+                                                    right: 30, left: 30),
+                                                child: Transform.translate(
+                                                  offset: Offset(0, -85),
+                                                  child: SimpleDialog(
+                                                    backgroundColor:
+                                                        Color(0xff262626),
+                                                    children: [
+                                                      ListTile(
+                                                        onTap: pickImage,
+                                                        title: Text(
+                                                          "Take a Photo",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color: Color(
+                                                                  0xff5F5A5A)),
+                                                        ),
+                                                        leading: Icon(
+                                                          Icons.photo_camera,
+                                                          color:
+                                                              Color(0xff5F5A5A),
+                                                        ),
+                                                      ),
+                                                      ListTile(
+                                                        onTap: pickGalaey,
+                                                        title: Text(
+                                                            "Upload Photo",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Color(
+                                                                    0xff5F5A5A))),
+                                                        leading: Icon(
+                                                            Icons.photo_library,
+                                                            color: Color(
+                                                                0xff5F5A5A)),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ));
+                                  },
+                                  child: Icon(
                                     size: 16.sp,
                                     Icons.border_color,
                                     color: Colors.white,
@@ -80,10 +156,10 @@ class EditProfileScreen extends StatelessWidget {
                           ],
                         ),
                         Padding(
-                          padding:  REdgeInsets.only(top: 3),
+                          padding: REdgeInsets.only(top: 3),
                           child: Text(
                             userName,
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontSize: 24.sp,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -91,10 +167,10 @@ class EditProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding:  REdgeInsets.all(5.0),
+                          padding: REdgeInsets.all(5.0),
                           child: Text(
                             userEmail,
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontSize: 16.sp,
                               color: Colors.white,
                             ),
@@ -102,16 +178,16 @@ class EditProfileScreen extends StatelessWidget {
                         ),
                         Text(
                           userPhoneNumber,
-                          style:  TextStyle(
+                          style: TextStyle(
                             fontSize: 16.sp,
                             color: Colors.white,
                           ),
                         ),
                         Container(
-                          margin:  REdgeInsets.only(top: 25),
+                          margin: REdgeInsets.only(top: 25),
                           alignment: Alignment.center,
                           width: MediaQuery.of(context).size.width,
-                          child:  Text(
+                          child: Text(
                             'Edit profile',
                             style: TextStyle(
                               fontSize: 28.sp,
@@ -121,39 +197,44 @@ class EditProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin:  REdgeInsets.only(top: 15),
+                          margin: REdgeInsets.only(top: 15),
                           height: 45.h,
                           child: DataField('Full Name', TextInputType.name),
                         ),
                         Container(
-                          margin:  REdgeInsets.only(top: 15),
+                          margin: REdgeInsets.only(top: 15),
                           height: 45.h,
                           child: DataField('Nick Name', TextInputType.name),
                         ),
                         Container(
-                          margin:  REdgeInsets.only(top: 15),
+                          margin: REdgeInsets.only(top: 15),
                           height: 45.h,
-                          child: DataField('Address', TextInputType.streetAddress),
+                          child:
+                              DataField('Address', TextInputType.streetAddress),
                         ),
                         Container(
-                          margin:  REdgeInsets.only(top: 15),
+                          margin: REdgeInsets.only(top: 15),
                           height: 65.h,
                           child: IntlPhoneField(
-                            dropdownIcon:  Icon(Icons.arrow_drop_down,size: 25.sp,),
+                            dropdownIcon: Icon(
+                              Icons.arrow_drop_down,
+                              size: 25.sp,
+                            ),
                             decoration: InputDecoration(
                                 filled: true,
                                 fillColor: const Color(0xff4D5151),
                                 hintText: 'Phone Number',
-                                hintStyle:  TextStyle(
+                                hintStyle: TextStyle(
                                   fontSize: 14.sp,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12.r)),
-                                contentPadding:  REdgeInsets.all(16)),
+                                contentPadding: REdgeInsets.all(16)),
                             keyboardType: TextInputType.phone,
-                            style:  TextStyle(color: Colors.white,fontSize: 14.sp),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14.sp),
                           ),
                         ),
                         Row(
@@ -162,73 +243,63 @@ class EditProfileScreen extends StatelessWidget {
                             SizedBox(
                               height: 45.h,
                               width: MediaQuery.of(context).size.width / 2.7,
-                              child:
-                                  DataField('State', TextInputType.streetAddress),
+                              child: DataField(
+                                  'State', TextInputType.streetAddress),
                             ),
-                            SizedBox(
-                              height: 45.h,
+                            Container(
+                              padding: REdgeInsets.all(10),
+                              height: 43.h,
+                              decoration: BoxDecoration(
+                                  color: Color(0xff4D5151),
+                                  borderRadius: BorderRadius.circular(12.r)),
                               width: MediaQuery.of(context).size.width / 2.7,
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: const Color(0xff4D5151),
-                                    hintText: 'Gender',
-                                    hintStyle:  TextStyle(
-                                      fontSize: 14.sp,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    suffixIcon: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.arrow_drop_down,
-                                        color: Color(0xff767676),
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(12.r)),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(12.r)),
-                                    contentPadding:  REdgeInsets.all(16)),
-                                keyboardType: TextInputType.text,
-                                style:  TextStyle(color: Colors.white,fontSize: 14.sp),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  
+                                  dropdownColor: Color(0xff4D5151),
+                                  elevation: 0,
+                                  value: value,
+                                  isExpanded: true,
+                                  items: item
+                                      .map((item) => DropdownMenuItem(
+                                          child: Text(
+                                            item,
+                                            style: TextStyle(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                          value: item))
+                                      .toList(),
+                                  onChanged: (value) => setState(() {
+                                    this.value = value!;
+                                  }),
+                                ),
                               ),
                             ),
                           ],
                         ),
                         Container(
-                          margin:  REdgeInsets.only(top: 15),
+                          margin: REdgeInsets.only(top: 15),
                           width: 237.w,
                           height: 50.h,
                           child: ElevatedButton(
-                            onPressed: ()=> Backandsubmitineditprofile(context),
+                            onPressed: () =>
+                                Backandsubmitineditprofile(context),
                             style: ElevatedButton.styleFrom(
                               alignment: Alignment.center,
                               backgroundColor: const Color(0xffff4b26),
-                              padding:  REdgeInsets.all(15),
+                              padding: REdgeInsets.all(15),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.r),
                               ),
                             ),
-                            child:  Text(
+                            child: Text(
                               'Submit',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                   fontSize: 20.sp),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin:  REdgeInsets.only(top: 15),
-                          child: InkWell(
-                            onTap: ()=> Backandsubmitineditprofile(context),
-                            child:  Text(
-                              'Back',
-                              style: TextStyle(
-                                color: const Color(0xff5F5A5A),
-                                fontSize: 16.sp,
-                              ),
                             ),
                           ),
                         ),
@@ -242,5 +313,49 @@ class EditProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<bool?> showMyDialog() => showDialog(
+    barrierDismissible: false,
+      context: context,
+      builder: (context) => AlertDialog(
+            backgroundColor: Color(0xff262626),
+            title: Text('Do you want to go back ?',
+                style: TextStyle(color: Color(0xff5F5A5A))),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.pop(context, false),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Color(0xff5F5A5A)),
+                  )),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: Text('Yes', style: TextStyle(color: Color(0xff5F5A5A))),
+              ),
+            ],
+          ));
+  DropdownMenuItem<String> buildmenuitem(String item) => DropdownMenuItem(
+        value: item,
+        child: Text(
+          item,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+        ),
+      );
+
+  void pickImage() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = File(image!.path);
+    });
+    Navigator.of(context, rootNavigator: true).pop('dialog');
+  }
+
+  void pickGalaey() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = File(image!.path);
+      Navigator.of(context, rootNavigator: true).pop('dialog');
+    });
   }
 }

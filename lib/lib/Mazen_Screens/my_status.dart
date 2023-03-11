@@ -20,7 +20,6 @@ class _mystatusstate extends State<mystatus> {
         return false;
       } ,
       child: Scaffold(
-        backgroundColor: const Color.fromRGBO(22, 22, 22, 1),
         appBar: AppBar(
           toolbarHeight: 70.h,
           elevation: 0.0,

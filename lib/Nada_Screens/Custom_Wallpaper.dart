@@ -14,7 +14,6 @@ class _Custom_WallpaperState extends State<Custom_Wallpaper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           toolbarHeight: 50.h,
           backgroundColor: const Color(0xff121212),

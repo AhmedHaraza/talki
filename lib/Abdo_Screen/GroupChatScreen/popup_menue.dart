@@ -1,20 +1,35 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-
-import 'search_bar_delegat.dart';
+import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
+import 'package:graduation_project_my_own_talki/provider/myprovider.dart';
+import 'package:provider/provider.dart';
 
 class PopUpMenu extends StatelessWidget {
   PopUpMenu({super.key});
 
-  List<String> items = ['Group Settings','Search','Wallpaper','Clear chat','Exit Group'];
+  List<String> items = [
+    'Group Settings',
+    'Search',
+    'Wallpaper',
+    'Clear chat',
+    'Exit Group'
+  ];
 
   @override
   Widget build(BuildContext context) {
+    myprovider provider = Provider.of(context);
     return PopupMenuButton(
       itemBuilder: (BuildContext context) {
         return items.map((item) {
           return PopupMenuItem(
+            onTap: item == 'Search'
+                ? () {
+                    provider.switch_app_scearch();
+                  }
+                : () {
+                    provider.switch_app2();
+                  },
             value: item,
             child: Text(
               item,
@@ -32,8 +47,8 @@ class PopUpMenu extends StatelessWidget {
       ),
       color: const Color(0xff1C1C1C),
       onSelected: (value) {
-        if (value == 'Search') {
-          showSearch(context: context, delegate: CustomSearchDelegate());
+        if (value == 'Group Settings') {
+          pageGroupSettings(context);
         }
       },
     );

@@ -15,7 +15,6 @@ class _solidcolor extends State<solid_color> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           toolbarHeight: 50.h,
           backgroundColor: const Color.fromRGBO(28, 28, 28, 1),

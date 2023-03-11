@@ -19,7 +19,6 @@ class ContactsScreen extends StatelessWidget {
         },
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: const Color(0xff161616),
           body: Container(
             padding: const EdgeInsets.only(
               top: 50,

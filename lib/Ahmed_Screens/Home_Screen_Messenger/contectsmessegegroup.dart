@@ -20,7 +20,6 @@ class contectsmessegegroup extends StatelessWidget {
           return true;
         } ,
         child: Scaffold(
-          backgroundColor: const Color(0xff161616),
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,

@@ -16,7 +16,6 @@ class Group extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: const Color(0xff161616),
         resizeToAvoidBottomInset: false,
         body: Padding(
           padding: REdgeInsets.only(top: 50, left: 20),

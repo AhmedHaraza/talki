@@ -35,7 +35,6 @@ class MainChatScreen extends StatelessWidget {
             child: const ChatBox(),
           ),
         ),
-        backgroundColor: const Color(0xff161616),
       ),
     );
   }

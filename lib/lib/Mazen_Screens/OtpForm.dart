@@ -28,7 +28,6 @@ class _OtpForm extends State<OtPForm> {
           return true;
         },
         child: Scaffold(
-          backgroundColor: const Color(0xff161616),
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(

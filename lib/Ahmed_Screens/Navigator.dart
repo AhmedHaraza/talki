@@ -14,6 +14,7 @@ import 'package:graduation_project_my_own_talki/Ahmed_Screens/Sign%20In.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/create%20an%20account.dart';
 import 'package:graduation_project_my_own_talki/Mohamed/Change_Pass_Scren.dart';
 import 'package:graduation_project_my_own_talki/Mohamed/Forget_Pass_Scren.dart';
+import 'package:graduation_project_my_own_talki/Mohamed/GroupSettings.dart';
 import 'package:graduation_project_my_own_talki/Mohamed/TypeS.dart';
 import 'package:graduation_project_my_own_talki/Nada_Screens/Custom_Wallpaper.dart';
 import 'package:graduation_project_my_own_talki/Nada_Screens/Reset_Password.dart';
@@ -160,8 +161,9 @@ void SttingMystatus(BuildContext ctx) {
 }
 void Mycontactsexceptinstatusprivacy(BuildContext ctx) {
   Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
-    return   const HideStatusScreen();
-  }));
+    return    HideStatusScreen();
+  }
+  ));
 }
 
 void iconEdit(BuildContext ctx) {
@@ -209,6 +211,13 @@ void CallSomePeople(BuildContext ctx) {
   Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
     return  ContactsScreen();
   }));
+}
+
+void pageGroupSettings(BuildContext ctx) {
+  Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
+    return  GroupSettings();
+  }
+  ));
 }
 
 

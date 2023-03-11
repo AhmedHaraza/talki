@@ -24,7 +24,6 @@ class ForgetPassScren extends StatelessWidget {
           return true;
         },
         child: Scaffold(
-          backgroundColor: const Color(0xff161616),
           body: SingleChildScrollView(
             child: Container(
               height: MediaQuery.of(context).size.height / 1.8,
