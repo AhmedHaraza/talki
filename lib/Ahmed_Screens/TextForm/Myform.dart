@@ -8,20 +8,27 @@ class MyForme extends StatelessWidget {
   TextInputType InputType;
   String? name;
   Icon? icon;
+  TextEditingController fieldController = TextEditingController();
 
-  MyForme(this.name, this.InputType, {this.addicon, this.icon});
+  MyForme(this.name, this.InputType, {this.addicon, this.icon,required this.fieldController});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40.h,
+      //height: 40.h,
       child: TextFormField(
+        validator: (value) =>
+          (value == '')? 'This Value is Required' : null,
+        controller: fieldController,
         style: TextStyle(
             color: const Color.fromRGBO(95, 90, 90, 1.0),
             fontSize: 12.sp,
             fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(10),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.r),
+              borderSide: BorderSide(color: MyThemeData.colorgray, width: 3.w)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15.r),
               borderSide: BorderSide(color: MyThemeData.colorgray, width: 3.w)),
@@ -55,15 +62,19 @@ class Myform2 extends StatelessWidget {
   String name;
   Icon? Lock;
   TextInputType InputType;
+  TextEditingController fieldController = TextEditingController();
 
   Myform2(this.name, this.Lock, this.InputType,
-      {this.addicon, required this.Visibilty_Paswword});
+      {this.addicon, required this.Visibilty_Paswword,required this.fieldController});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40.h,
+      //height: 40.h,
       child: TextFormField(
+        validator: (value) =>
+          (value == '')? 'This Value is Required' :  null ,
+        controller: fieldController,
         style: TextStyle(
           color: const Color.fromRGBO(95, 90, 90, 1.0),
           height: 1.h,
@@ -72,6 +83,9 @@ class Myform2 extends StatelessWidget {
         ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(10),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.r),
+              borderSide: BorderSide(color: MyThemeData.colorgray, width: 3.w)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15.r),
               borderSide: BorderSide(color: MyThemeData.colorgray, width: 3.w)),

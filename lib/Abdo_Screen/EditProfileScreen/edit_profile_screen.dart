@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Abdo_Screen/EditProfileScreen/custom_shape.dart';
@@ -125,7 +126,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                                         ),
                                                       ),
                                                       ListTile(
-                                                        onTap: pickGalaey,
+                                                        onTap: () async {
+                                                          final result =
+                                                              await FilePicker
+                                                                  .platform
+                                                                  .pickFiles(
+                                                            allowMultiple: true,
+                                                            type:
+                                                                FileType.image,
+                                                          );
+                                                          if (result == null)
+                                                            return;
+                                                        },
                                                         title: Text(
                                                             "Upload Photo",
                                                             style: TextStyle(
@@ -199,12 +211,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         Container(
                           margin: REdgeInsets.only(top: 15),
                           height: 45.h,
-                          child: DataField('Full Name', TextInputType.name),
+                          child: DataField('First Name', TextInputType.name),
                         ),
                         Container(
                           margin: REdgeInsets.only(top: 15),
                           height: 45.h,
-                          child: DataField('Nick Name', TextInputType.name),
+                          child: DataField('Last Name', TextInputType.name),
                         ),
                         Container(
                           margin: REdgeInsets.only(top: 15),
@@ -255,7 +267,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               width: MediaQuery.of(context).size.width / 2.7,
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                  
                                   dropdownColor: Color(0xff4D5151),
                                   elevation: 0,
                                   value: value,
@@ -316,7 +327,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Future<bool?> showMyDialog() => showDialog(
-    barrierDismissible: false,
+      barrierDismissible: false,
       context: context,
       builder: (context) => AlertDialog(
             backgroundColor: Color(0xff262626),
@@ -351,11 +362,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     Navigator.of(context, rootNavigator: true).pop('dialog');
   }
 
-  void pickGalaey() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    setState(() {
-      _image = File(image!.path);
-      Navigator.of(context, rootNavigator: true).pop('dialog');
-    });
-  }
+  // void pickGalaey() async {
+  //   var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //   setState(() {
+  //     _image = File(image!.path);
+  //     Navigator.of(context, rootNavigator: true).pop('dialog');
+  //   });
+  // }
 }

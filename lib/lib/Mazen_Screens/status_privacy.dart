@@ -11,8 +11,9 @@ class status_privacy extends StatefulWidget {
   State<status_privacy> createState() => _status_privacy();
 }
 
+int? _value = 0;
+
 class _status_privacy extends State<status_privacy> {
-  int _value = 0;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -21,6 +22,7 @@ class _status_privacy extends State<status_privacy> {
         return true;
       },
       child: Scaffold(
+        backgroundColor: const Color(0xff161616),
         appBar: AppBar(
           elevation: 0.0,
           toolbarHeight: 70.h,
@@ -42,9 +44,9 @@ class _status_privacy extends State<status_privacy> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // const Divider(
-              //   color: Color(0xff6E6E6E),
-              // ),
+              const Divider(
+                color: Color(0xff6E6E6E),
+              ),
               Padding(
                 padding: REdgeInsets.all(15),
                 child: Text(
@@ -56,68 +58,85 @@ class _status_privacy extends State<status_privacy> {
                 ),
               ),
               Container(
-                margin: REdgeInsets.only(left: 45),
-                child: Row(
-                  children: [
-                    Transform.scale(
-                      scale: 1.sp,
-                      child: Radio(
-                        fillColor: MaterialStateProperty.all(Colors.blue),
-                        value: 1,
-                        groupValue: _value,
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _value = value!;
-                            },
-                          );
-                        },
-                      ),
+                margin: REdgeInsets.only(left: 35),
+                child: Transform.scale(
+                  scale: 1.sp,
+                  child: Theme(
+                    data: ThemeData(
+                      unselectedWidgetColor: Colors.blue,
                     ),
-                    SizedBox(
-                      width: 10.0.w,
-                    ),
-                    Container(
-                      margin: REdgeInsets.only(left: 24),
-                      child: Text(
+                    child: RadioListTile(
+                      title: Text(
                         "My Contacts",
                         style: TextStyle(color: Colors.white, fontSize: 20.sp),
                       ),
-                    )
-                  ],
+                      value: 1,
+                      groupValue: _value,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            _value = value;
+                          },
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ),
               Container(
-                margin: REdgeInsets.only(left: 45),
-                child: Row(
-                  children: [
-                    Transform.scale(
-                      scale: 1.sp,
-                      child: Radio(
-                          fillColor: MaterialStateProperty.all(Colors.blue),
-                          value: 2,
-                          groupValue: _value,
-                          onChanged: ((Value) {
-                            setState(() {
-                              _value = Value!;
-                            });
-                          })),
+                margin: REdgeInsets.only(left: 35),
+                child: Transform.scale(
+                  scale: 1.sp,
+                  child: Theme(
+                    data: ThemeData(
+                      unselectedWidgetColor: Colors.blue,
                     ),
-                    SizedBox(
-                      width: 10.0.w,
+                    child: RadioListTile(
+                      title: Text(
+                        "Specific Contacts",
+                        style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                      ),
+                      value: 2,
+                      groupValue: _value,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            _value = value;
+                          },
+                        );
+                      },
                     ),
-                    Container(
-                      margin: REdgeInsets.only(left: 24),
-                      child: InkWell(
-                        onTap: () => Mycontactsexceptinstatusprivacy(context),
-                        child: Text(
-                          'My contacts except...',
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 20.sp),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: (_value == 2) ? true : false,
+                child: Transform.translate(
+                  offset: Offset(37, 0),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 260.w,
+                    child: ListTile(
+                      onTap: () {
+                        Mycontactsexceptinstatusprivacy(context);
+                      },
+                      leading: Icon(
+                        Icons.hide_source,
+                        color: Color.fromRGBO(255, 75, 38, 1),
+                      ),
+                      title: Text(
+                        'Hide Status From',
+                        style: TextStyle(
+                          color: Color.fromRGBO(255, 75, 38, 1),
+                          fontSize: 18.sp,
                         ),
                       ),
-                    )
-                  ],
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Color.fromRGBO(255, 75, 38, 1),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Padding(

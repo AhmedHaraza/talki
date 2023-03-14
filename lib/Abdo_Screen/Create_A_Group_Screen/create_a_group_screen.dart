@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Home_Screen_Messenger/Main_Navigation.dart';
@@ -70,7 +71,15 @@ class _CreateGroupState extends State<CreateGroup> {
                                       ),
                                     ),
                                     ListTile(
-                                      onTap: pickGalaey,
+                                      onTap: () async {
+                                          final result = await FilePicker
+                                              .platform
+                                              .pickFiles(
+                                            allowMultiple: true,
+                                            type: FileType.image,
+                                          );
+                                          if (result == null) return;
+                                        },
                                       title: Text("Upload Photo",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,

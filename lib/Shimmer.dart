@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project_my_own_talki/Ahmed_Screens/Navigator.dart';
+import 'package:graduation_project_my_own_talki/main.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MyHomepage extends StatelessWidget {
@@ -12,7 +13,14 @@ class MyHomepage extends StatelessWidget {
         Duration(
           seconds: 5,
         ),
-        () => CircleAvatar_go_to_sin_in(context));
+        () {
+          if(isLogin == false){
+            CircleAvatar_go_to_sin_in(context);
+          }
+          else{
+            Backandsubmitineditprofile(context);
+          }
+        });
     return Scaffold(
       body: Center(
         child: Container(
@@ -44,12 +52,3 @@ class MyHomepage extends StatelessWidget {
     );
   }
 }
-
-// Padding(
-//         padding: const EdgeInsets.only(bottom: 20),
-//         child: Image.asset(
-//           "assets/image/icontext.png",
-//           width: 50,
-//           height: 50,
-//         ),
-//       ),

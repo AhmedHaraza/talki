@@ -49,6 +49,11 @@ dependencies:
   emoji_picker_flutter: ^1.5.2
   permission_handler: ^10.2.0
   social_media_recorder: ^0.1.85 
+  firebase_storage: ^11.0.14
+  firebase_messaging: ^14.2.5
+  awesome_dialog: ^3.0.2
+  google_sign_in: ^6.0.2
+  flutter_facebook_auth: '^3.5.0'
 dev_dependencies:
   flutter_test:
     sdk: flutter
